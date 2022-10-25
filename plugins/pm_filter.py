@@ -91,20 +91,20 @@ async def next_page(bot, query):
         off_set = offset - 10
     if n_offset == 0:
         btn.append(
-            [InlineKeyboardButton("◀️ BACK", callback_data=f"next_{req}_{key}_{off_set}"),
+            [InlineKeyboardButton("◀◁ BACK", callback_data=f"next_{req}_{key}_{off_set}"),
              InlineKeyboardButton(f"📃 {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}",
                                   callback_data="pages")]
         )
     elif off_set is None:
         btn.append(
             [InlineKeyboardButton(f"📃 {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}", callback_data="pages"),
-             InlineKeyboardButton("NEXT ▶️", callback_data=f"next_{req}_{key}_{n_offset}")])
+             InlineKeyboardButton("NEXT ▶▷", callback_data=f"next_{req}_{key}_{n_offset}")])
     else:
         btn.append(
             [
-                InlineKeyboardButton("◀️ BACK", callback_data=f"next_{req}_{key}_{off_set}"),
+                InlineKeyboardButton("◀◁ BACK", callback_data=f"next_{req}_{key}_{off_set}"),
                 InlineKeyboardButton(f"📃 {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}", callback_data="pages"),
-                InlineKeyboardButton("NEXT ▶️", callback_data=f"next_{req}_{key}_{n_offset}")
+                InlineKeyboardButton("NEXT ▶▷", callback_data=f"next_{req}_{key}_{n_offset}")
             ],
         )
     try:
@@ -157,13 +157,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     title = chat.title
                 except:
                     await query.message.edit_text("Make sure I'm present in your group!!", quote=True)
-                    return await query.answer('Piracy Is Crime')
+                    return await query.answer('🚫 Piracy Is Crime')
             else:
                 await query.message.edit_text(
                     "I'm not connected to any groups!\nCheck /connections or connect to any groups",
                     quote=True
                 )
-                return await query.answer('Piracy Is Crime')
+                return await query.answer('🚫 Piracy Is Crime')
 
         elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
             grp_id = query.message.chat.id
